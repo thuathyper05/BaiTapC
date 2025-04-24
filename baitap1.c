@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<math.h>
+void NhapMang(int a[], int n);
+void XuatMang(int a[], int n);
+float TBCCacSoNguyenDuong(int a[], int n);
+int DemPTuChiaHet5(int a[], int n);
+void KiemTraDoiXung(int a[], int n);
+int main(){
+    int n, m[100];
+    printf("Nhap n: "); scanf("%d", &n);
+    NhapMang(m, n);
+    XuatMang(m, n);
+    TBCCacSoNguyenDuong(m, n);
+    DemPTuChiaHet5(m, n);
+    KiemTraDoiXung(m, n);  
+}
+void NhapMang(int a[], int n){
+    int i;
+    printf("Nhap cac phan tu trong mang: ");
+    for(i = 0; i < n; i++){
+        scanf("%d", &a[i]);
+    }
+}
+void XuatMang(int a[], int n){
+    int i;
+    printf("Mang: ");
+    for(i = 0; i < n; i++){
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+}
+float TBCCacSoNguyenDuong(int a[], int n){
+    float TBC = 0; 
+    int dem = 0;
+    int i;
+    for(i = 0; i < n; i++){
+        if(a[i] > 0){
+            TBC += a[i];
+            dem++;
+        }
+    }
+    if(dem > 0)
+        TBC /= dem;
+    else
+        printf("Khong co so nguyen duong trong mang.\n");
+    
+    printf("TBC cac so nguyen duong: %f\n", TBC);
+    return TBC;
+}
+int DemPTuChiaHet5(int a[], int n){
+    int dem = 0, i;
+    for(i = 0; i < n; i++){
+        if(a[i] % 5 == 0){
+            dem++;
+        }
+    }
+    printf("So phan tu chia het cho 5: %d\n", dem);
+    return dem;
+}
+void KiemTraDoiXung(int a[], int n){
+    int i;
+    int DX = 1;  
+    for(i = 0; i < n / 2; i++){
+        if(a[i] != a[n - i - 1]){
+            DX = 0;
+            break;  
+        }
+    }
+    if(DX)
+        printf("Mang doi xung.\n");
+    else
+        printf("Mang khong doi xung.\n");
+}
+
